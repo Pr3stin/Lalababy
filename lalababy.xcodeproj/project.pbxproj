@@ -8,10 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		8C81448729F6065B00A5BFAB /* BottleViewControllerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C81448629F6065B00A5BFAB /* BottleViewControllerTableViewController.swift */; };
+		8C81448929F7548E00A5BFAB /* PumpsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C81448829F7548E00A5BFAB /* PumpsViewController.swift */; };
+		8C81448B29F7550400A5BFAB /* NewPumpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C81448A29F7550400A5BFAB /* NewPumpViewController.swift */; };
+		8C81448D29F764A100A5BFAB /* DiaperViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C81448C29F764A100A5BFAB /* DiaperViewController.swift */; };
+		8C81448F29F765D000A5BFAB /* NewDiaperViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C81448E29F765D000A5BFAB /* NewDiaperViewController.swift */; };
 		8CB668CB29F4DC6F00DCD1C5 /* NewFeedingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB668CA29F4DC6F00DCD1C5 /* NewFeedingController.swift */; };
 		8CBBA19F29E4F0CE005861A1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CBBA19E29E4F0CE005861A1 /* AppDelegate.swift */; };
 		8CBBA1A129E4F0CE005861A1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CBBA1A029E4F0CE005861A1 /* SceneDelegate.swift */; };
-		8CBBA1A329E4F0CE005861A1 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CBBA1A229E4F0CE005861A1 /* MainViewController.swift */; };
+		8CBBA1A329E4F0CE005861A1 /* FeedingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CBBA1A229E4F0CE005861A1 /* FeedingsViewController.swift */; };
 		8CBBA1A629E4F0CE005861A1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8CBBA1A429E4F0CE005861A1 /* Main.storyboard */; };
 		8CBBA1A929E4F0CE005861A1 /* lalababy.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8CBBA1A729E4F0CE005861A1 /* lalababy.xcdatamodeld */; };
 		8CBBA1AB29E4F0D0005861A1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8CBBA1AA29E4F0D0005861A1 /* Assets.xcassets */; };
@@ -20,11 +24,15 @@
 
 /* Begin PBXFileReference section */
 		8C81448629F6065B00A5BFAB /* BottleViewControllerTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottleViewControllerTableViewController.swift; sourceTree = "<group>"; };
+		8C81448829F7548E00A5BFAB /* PumpsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PumpsViewController.swift; sourceTree = "<group>"; };
+		8C81448A29F7550400A5BFAB /* NewPumpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPumpViewController.swift; sourceTree = "<group>"; };
+		8C81448C29F764A100A5BFAB /* DiaperViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DiaperViewController.swift; path = lalababy/Controllers/DiaperViewController.swift; sourceTree = SOURCE_ROOT; };
+		8C81448E29F765D000A5BFAB /* NewDiaperViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewDiaperViewController.swift; sourceTree = "<group>"; };
 		8CB668CA29F4DC6F00DCD1C5 /* NewFeedingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NewFeedingController.swift; path = lalababy/Controllers/NewFeedingController.swift; sourceTree = SOURCE_ROOT; };
 		8CBBA19B29E4F0CE005861A1 /* lalababy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = lalababy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CBBA19E29E4F0CE005861A1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8CBBA1A029E4F0CE005861A1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		8CBBA1A229E4F0CE005861A1 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		8CBBA1A229E4F0CE005861A1 /* FeedingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedingsViewController.swift; sourceTree = "<group>"; };
 		8CBBA1A529E4F0CE005861A1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8CBBA1A829E4F0CE005861A1 /* lalababy.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = lalababy.xcdatamodel; sourceTree = "<group>"; };
 		8CBBA1AA29E4F0D0005861A1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -46,9 +54,13 @@
 		8C692E7729F0D74A008B3D75 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				8CBBA1A229E4F0CE005861A1 /* FeedingsViewController.swift */,
 				8CB668CA29F4DC6F00DCD1C5 /* NewFeedingController.swift */,
 				8C81448629F6065B00A5BFAB /* BottleViewControllerTableViewController.swift */,
-				8CBBA1A229E4F0CE005861A1 /* MainViewController.swift */,
+				8C81448829F7548E00A5BFAB /* PumpsViewController.swift */,
+				8C81448A29F7550400A5BFAB /* NewPumpViewController.swift */,
+				8C81448C29F764A100A5BFAB /* DiaperViewController.swift */,
+				8C81448E29F765D000A5BFAB /* NewDiaperViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -179,9 +191,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8CBBA1A329E4F0CE005861A1 /* MainViewController.swift in Sources */,
+				8C81448929F7548E00A5BFAB /* PumpsViewController.swift in Sources */,
+				8C81448B29F7550400A5BFAB /* NewPumpViewController.swift in Sources */,
+				8CBBA1A329E4F0CE005861A1 /* FeedingsViewController.swift in Sources */,
 				8CB668CB29F4DC6F00DCD1C5 /* NewFeedingController.swift in Sources */,
+				8C81448D29F764A100A5BFAB /* DiaperViewController.swift in Sources */,
 				8C81448729F6065B00A5BFAB /* BottleViewControllerTableViewController.swift in Sources */,
+				8C81448F29F765D000A5BFAB /* NewDiaperViewController.swift in Sources */,
 				8CBBA1A929E4F0CE005861A1 /* lalababy.xcdatamodeld in Sources */,
 				8CBBA19F29E4F0CE005861A1 /* AppDelegate.swift in Sources */,
 				8CBBA1A129E4F0CE005861A1 /* SceneDelegate.swift in Sources */,

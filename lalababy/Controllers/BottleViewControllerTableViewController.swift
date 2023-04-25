@@ -55,6 +55,15 @@ class BottleViewController: UIViewController {
         
     }
  
+    
+    //Cancel Button
+    
+    
+    @IBAction func cancelBottle(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    
     // Button Picker
     
     @objc func buttonSelected(_ sender: UIButton){

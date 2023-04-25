@@ -13,7 +13,7 @@ class MainViewController: UITableViewController {
     
     @IBOutlet var Feedings: UITableView!
     
-    let itemArray = ["Hello", "Brother"]
+    let itemArray = ["Test Cell 1", "Test Cell 2", "Test Cell 3", "Test Cell 4"]
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -53,6 +53,19 @@ class BreastFeedingController: UIViewController {
         
     }
     
+    //New Feeding Cancel
+    
+    @IBAction func cancelButtonTapped(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    //Breast Feed Cancel
+    
+    @IBAction func cancelButtonPressed(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    
     // Time Picker
    
     @objc func timePickerValueChanged(sender: UIDatePicker) {
@@ -69,6 +82,32 @@ class BreastFeedingController: UIViewController {
     // Left and Right Timers
     
     @IBAction func leftButtonPressed(_ sender: Any) {
+      
+//        if timerL == nil {
+//               timerL = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { [weak self] _ in
+//                   guard let self = self else { return }
+//                   self.elapsedTimeL += 1
+//                   self.totalTime(withTimerElapsedR: self.elapsedTimeR, elapsedTimerL: self.elapsedTimeR, timerR: self.timerR, timerL: self.timerR)
+//               })
+//           } else {
+//               timerL?.invalidate()
+//               timerL = nil
+//           }
+//        totalTime(withTimerElapsedR: self.elapsedTimeR, elapsedTimerL: self.elapsedTimeR, timerR: self.timerR, timerL: self.timerR)
+        
+              
+        
+        
+        if timerL == nil {
+               timerL = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { [weak self] _ in
+                   guard let self = self else { return }
+                   self.elapsedTimeL += 1
+                   self.totalTime(withTimerElapsedR: self.elapsedTimeR, elapsedTimerL: self.elapsedTimeL)
+               })
+           } else {
+               timerL?.invalidate()
+               timerL = nil
+           }
         
         if isRunningL {
             timerL?.invalidate()
@@ -84,20 +123,33 @@ class BreastFeedingController: UIViewController {
             isRunningL = true
         }
         
-        if timerL == nil {
-               timerL = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { [weak self] _ in
-                   guard let self = self else { return }
-                   self.elapsedTimeL += 1
-                   self.totalTime(withTimerElapsedR: self.elapsedTimeR, elapsedTimerL: self.elapsedTimeL)
-               })
-           } else {
-               timerL?.invalidate()
-               timerL = nil
-           }
     }
     
     
     @IBAction func rightButtonPressed(_ sender: Any) {
+   
+//        if timerR == nil {
+//               timerR = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { [weak self] _ in
+//                   guard let self = self else { return }
+//                   self.elapsedTimeR += 1
+//                   self.totalTime(withTimerElapsedR: self.elapsedTimeR, elapsedTimerL: self.elapsedTimeR, timerR: self.timerR, timerL: self.timerR)
+//               })
+//           } else {
+//               timerR?.invalidate()
+//               timerR = nil
+//           }
+//        totalTime(withTimerElapsedR: self.elapsedTimeR, elapsedTimerL: self.elapsedTimeR, timerR: self.timerR, timerL: self.timerR)
+        
+        if timerR == nil {
+                timerR = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { [weak self] _ in
+                    guard let self = self else { return }
+                    self.elapsedTimeR += 1
+                    self.totalTime(withTimerElapsedR: self.elapsedTimeR, elapsedTimerL: self.elapsedTimeL)
+                })
+            } else {
+                timerR?.invalidate()
+                timerR = nil
+            }
         
         if isRunningR {
             timerR?.invalidate()
@@ -113,16 +165,6 @@ class BreastFeedingController: UIViewController {
             isRunningR = true
         }
         
-        if timerR == nil {
-                timerR = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { [weak self] _ in
-                    guard let self = self else { return }
-                    self.elapsedTimeR += 1
-                    self.totalTime(withTimerElapsedR: self.elapsedTimeR, elapsedTimerL: self.elapsedTimeL)
-                })
-            } else {
-                timerR?.invalidate()
-                timerR = nil
-            }
     }
     
     
@@ -139,7 +181,12 @@ class BreastFeedingController: UIViewController {
            }
     
     func totalTime(withTimerElapsedR elapsedTimerR: TimeInterval, elapsedTimerL: TimeInterval) {
-        let totalTimeElapsed = elapsedTimeL + elapsedTimeR
+        var totalTimeElapsed = elapsedTimeL + elapsedTimeR
+        
+        if timerR == nil && timerL == nil {
+        
+                totalTimeElapsed = 0
+            }
         
         let minutes = Int(totalTimeElapsed) / 60 % 60
         let seconds = Int(totalTimeElapsed) % 60
