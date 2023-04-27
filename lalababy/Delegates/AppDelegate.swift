@@ -27,7 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didDiscardSceneSessions sceneSessions: Set<UISceneSession>) {
         
-        
+    }
         // MARK: - Core Data stack
         
         lazy var persistentContainer: NSPersistentCloudKitContainer = {
@@ -41,6 +41,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             })
             return container
         }()
+    
+//    lazy var fetchedResultsController: NSFetchedResultsController<NSManagedObject> = {
+//        let fetchRequest: NSFetchRequest<NSManagedObject> = NSFetchRequest(entityName: "BottleFeedings")
+//        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "type", ascending: true)]
+//        let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.persistentContainer.viewContext, sectionNameKeyPath: nil, cacheName: nil)
+//        return fetchedResultsController
+//    }()
+    
+//    lazy var fetchedResultsController2: NSFetchedResultsController<NSManagedObject> = {
+//        let fetchRequest: NSFetchRequest<NSManagedObject> = NSFetchRequest(entityName: "BreastFeedings")
+//        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "startTime", ascending: true)]
+//        let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.persistentContainer.viewContext, sectionNameKeyPath: nil, cacheName: nil)
+//        return fetchedResultsController
+//    }()
+//
         
         // MARK: - Core Data Saving support
         
@@ -58,4 +73,4 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
     }
-}
+
