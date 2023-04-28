@@ -2,7 +2,7 @@
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="21512" systemVersion="21G217" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="YES" userDefinedModelVersionIdentifier="">
     <entity name="BottleFeedings" representedClassName="BottleFeedings" syncable="YES" codeGenerationType="class">
         <attribute name="amount" optional="YES" attributeType="String"/>
-        <attribute name="amountMeasurement" optional="YES" attributeType="String"/>
+        <attribute name="amountM" optional="YES" attributeType="String"/>
         <attribute name="startTime" optional="YES" attributeType="String"/>
         <attribute name="type" optional="YES" attributeType="String"/>
     </entity>

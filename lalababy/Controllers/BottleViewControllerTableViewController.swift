@@ -55,6 +55,9 @@ class BottleViewController: UIViewController {
         
     }
  
+    @IBAction func saveButtonPressed(_ sender: Any) {
+        print("save tapped")
+    }
     
     //Cancel Button
     
