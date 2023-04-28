@@ -266,9 +266,13 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Save" id="qiu-5L-0SF">
                             <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="saveButtonPressed:" destination="WYL-ZK-KNC" id="82d-zn-17U"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="diaperPicker" destination="yj8-Db-xlo" id="NVX-ms-qqA"/>
                         <outlet property="timeChanged" destination="b5R-iZ-T3x" id="6qq-xS-eU5"/>
                     </connections>
                 </viewController>

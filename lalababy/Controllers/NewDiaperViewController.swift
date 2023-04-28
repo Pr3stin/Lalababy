@@ -6,47 +6,58 @@
 //
 
 import UIKit
+import CoreData
 
 class NewDiaperViewController: UIViewController {
 
-    @IBOutlet weak var wetButton: UIButton!
-    @IBOutlet weak var dirtyButton: UIButton!
-    @IBOutlet weak var dryButton: UIButton!
+    @IBOutlet weak var diaperPicker: UISegmentedControl!
     @IBOutlet weak var timeChanged: UITextField!
+    
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    
+    let diaperChange = Diapers()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        //Button Picker
-        
-        dryButton?.layer.masksToBounds = true
-        dryButton?.layer.cornerRadius = 5
-        wetButton?.layer.masksToBounds = true
-        wetButton?.layer.cornerRadius = 5
-        dirtyButton?.layer.masksToBounds = true
-        dirtyButton?.layer.cornerRadius = 5
-        dryButton.addTarget(self, action: #selector(buttonSelected(_:)), for: .touchUpInside)
-                view.addSubview(dryButton)
-        wetButton.addTarget(self, action: #selector(buttonSelected(_:)), for: .touchUpInside)
-                view.addSubview(wetButton)
-        dirtyButton.addTarget(self, action: #selector(buttonSelected(_:)), for: .touchUpInside)
-                view.addSubview(dirtyButton)
+      
         
         //Time Picker
         
-        let time = Date()
+        let startTime = UIDatePicker()
         let formatter = DateFormatter()
-        formatter.dateFormat = "hh:mm"
-        formatter.string(from: time)
-        timeChanged?.text = "Time: " + formatter.string(from: time)
-        
-        let timePicker = UIDatePicker()
-        timePicker.datePickerMode = .time
-        timePicker.addTarget(self, action: #selector(timePickerValueChanged(sender:)), for: UIControl.Event.valueChanged)
-        timePicker.frame.size = CGSize(width: 0, height: 200)
-        timeChanged?.inputView = timePicker
-        timePicker.addTarget(self, action: #selector(timeChanging), for: .valueChanged)
+        let time = Date()
+        formatter.dateFormat = "MM/YY hh:mm a"
+        startTime.datePickerMode = .time
+        startTime.addTarget(self, action: #selector(timePickerValueChanged), for: UIControl.Event.valueChanged)
+        startTime.frame.size = CGSize(width: 0, height: 300)
+        startTime.preferredDatePickerStyle = .wheels
+        timeChanged.inputView = startTime
+        timeChanged.text = formatter.string(from: time)
      
+    }
+    
+    //Save
+    
+    @IBAction func saveButtonPressed(_ sender: Any) {
+        guard let diaper = diaperPicker.titleForSegment(at: diaperPicker.selectedSegmentIndex),
+              let timePick = timeChanged.text
+        else { return}
+        
+        let newDiaper = Diapers(context: self.context)
+        newDiaper.time = timePick
+        newDiaper.diaperType = diaper
+        
+        self.saveData()
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    func saveData() {
+        do {
+            try context.save()
+        } catch {
+            print("Error saving Data \(error)")
+        }
     }
     
     //Cancel
@@ -56,30 +67,12 @@ class NewDiaperViewController: UIViewController {
     }
     
     
-    //Button Selected
-    
-    @objc func buttonSelected(_ sender: UIButton){
-        if sender == dryButton {
-            dryButton.backgroundColor = UIColor.white
-            wetButton.backgroundColor = UIColor(named: "BackgroundBlue")
-            dirtyButton.backgroundColor = UIColor(named: "BackgroundBlue")
-        } else if sender == wetButton {
-            wetButton.backgroundColor = UIColor.white
-            dryButton.backgroundColor = UIColor(named: "BackgroundBlue")
-            dirtyButton.backgroundColor = UIColor(named: "BackgroundBlue")
-        } else if sender == dirtyButton {
-            dirtyButton.backgroundColor = UIColor.white
-            wetButton.backgroundColor = UIColor(named: "BackgroundBlue")
-            dryButton.backgroundColor = UIColor(named: "BackgroundBlue")
-        }
-    }
-    
     //Time Picker
     
     @objc func timePickerValueChanged(sender: UIDatePicker) {
             let formatter = DateFormatter()
-            formatter.dateFormat = "hh:mm"
-            timeChanged?.text = "Start Time: " + formatter.string(from: sender.date)
+            formatter.dateFormat = "MM/YY hh:mm"
+            timeChanged?.text = "Time: " + formatter.string(from: sender.date)
         }
     
     @objc func timeChanging() {

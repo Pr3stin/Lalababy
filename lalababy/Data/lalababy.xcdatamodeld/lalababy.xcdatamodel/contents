@@ -13,7 +13,7 @@
         <attribute name="totalTime" optional="YES" attributeType="String"/>
     </entity>
     <entity name="Diapers" representedClassName="Diapers" syncable="YES" codeGenerationType="class">
-        <attribute name="diaperStatus" optional="YES" attributeType="String"/>
+        <attribute name="diaperType" optional="YES" attributeType="String"/>
         <attribute name="time" optional="YES" attributeType="String"/>
     </entity>
     <entity name="Pumps" representedClassName="Pumps" syncable="YES" codeGenerationType="class">
