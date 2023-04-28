@@ -6,29 +6,22 @@
 //
 
 import UIKit
+import CoreData
 
 class BottleViewController: UIViewController {
 
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
-    @IBOutlet weak var formulaButton: UIButton!
-    @IBOutlet weak var milkButton: UIButton!
+    let bottleFeed = BottleFeedings()
+    
+   
+    @IBOutlet weak var typeOfMilk: UISegmentedControl!
     @IBOutlet weak var feedTime: UITextField!
     @IBOutlet weak var amountEaten: UITextField!
     @IBOutlet weak var unitOfMeasurement: UISegmentedControl!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-       
-        //Button Picker
-        
-        formulaButton?.layer.masksToBounds = true
-        formulaButton?.layer.cornerRadius = 5
-        milkButton?.layer.masksToBounds = true
-        milkButton?.layer.cornerRadius = 5
-        formulaButton.addTarget(self, action: #selector(buttonSelected(_:)), for: .touchUpInside)
-                view.addSubview(formulaButton)
-        milkButton.addTarget(self, action: #selector(buttonSelected(_:)), for: .touchUpInside)
-                view.addSubview(milkButton)
         
         
         //Time Picker
@@ -42,21 +35,41 @@ class BottleViewController: UIViewController {
         let timePicker = UIDatePicker()
         timePicker.datePickerMode = .time
         timePicker.addTarget(self, action: #selector(timePickerValueChanged(sender:)), for: UIControl.Event.valueChanged)
-        timePicker.frame.size = CGSize(width: 0, height: 200)
+        timePicker.frame.size = CGSize(width: 100, height: 200)
         feedTime?.inputView = timePicker
         timePicker.addTarget(self, action: #selector(timeChanged), for: .valueChanged)
-        
-        //Amount Eaten
-        
-        amountEaten.placeholder = "Amount Eaten:"
-        amountEaten.keyboardType = .decimalPad
-        
-        
+      
         
     }
  
+    //Saving New Feeding
+    
     @IBAction func saveButtonPressed(_ sender: Any) {
-        print("save tapped")
+        guard let time = feedTime.text,
+              let amount = amountEaten.text,
+              let type = unitOfMeasurement.titleForSegment(at: unitOfMeasurement.selectedSegmentIndex),
+              let typeOf = typeOfMilk.titleForSegment(at: typeOfMilk.selectedSegmentIndex)
+        else { return }
+        
+        
+        let newFeeding = BottleFeedings(context: self.context)
+        newFeeding.amount = amount
+        newFeeding.startTime = time
+        newFeeding.amountM = type
+        newFeeding.type = typeOf
+        
+        
+        
+        self.saveData()
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    func saveData() {
+        do {
+            try context.save()
+        } catch {
+            print("Error saving Data \(error)")
+        }
     }
     
     //Cancel Button
@@ -66,18 +79,6 @@ class BottleViewController: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
     
-    
-    // Button Picker
-    
-    @objc func buttonSelected(_ sender: UIButton){
-        if sender == formulaButton {
-            formulaButton.backgroundColor = UIColor.white
-            milkButton.backgroundColor = UIColor(named: "BackgroundBlue")
-        } else if sender == milkButton {
-            milkButton.backgroundColor = UIColor.white
-            formulaButton.backgroundColor = UIColor(named: "BackgroundBlue")
-        }
-    }
     
     //Time Picker
     

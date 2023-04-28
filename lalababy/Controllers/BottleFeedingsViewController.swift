@@ -26,6 +26,9 @@ class MainViewController: UITableViewController {
      
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        loadData()
+    }
     
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -33,7 +36,6 @@ class MainViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        //let bottle = BottleFeedingss()
         let cell = tableView.dequeueReusableCell(withIdentifier: "BottleCell", for: indexPath)
         let bottle = array[indexPath.row]
        cell.textLabel?.text = "\(bottle.startTime ?? "")   \(bottle.type ?? "")  \(bottle.amount ?? "") \(bottle.amountM ?? "")"
