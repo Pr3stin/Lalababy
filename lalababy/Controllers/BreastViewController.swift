@@ -6,25 +6,46 @@
 //
 
 import UIKit
+import CoreData
 
 class BreastViewController: UITableViewController {
 
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    
+    var breastFeeding = [BreastFeedings]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
     }
-
-    // MARK: - Table view data source
-
-    override func numberOfSections(in tableView: UITableView) -> Int {
-       
-        return 0
+    
+    override func viewDidAppear(_ animated: Bool) {
+        loadData()
     }
+
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
      
-        return 0
+        return breastFeeding.count
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "BreastCell", for: indexPath)
+        let breast = breastFeeding[indexPath.row]
+        cell.textLabel?.text = "\(breast.startTime ?? "") L: \(breast.left ?? "") R: \(breast.right ?? "") \(breast.totalTime ?? "")"
+        return cell
     }
 
+    
+    func loadData() {
+        let request : NSFetchRequest<BreastFeedings> = BreastFeedings.fetchRequest()
+        
+        do {
+            breastFeeding = try context.fetch(request)
+        } catch {
+            print("Error loading Data \(error)")
+        }
+        tableView.reloadData()
+    }
 
 }

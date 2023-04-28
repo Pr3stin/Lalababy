@@ -26,17 +26,16 @@ class BottleViewController: UIViewController {
         
         //Time Picker
       
-        
         let startTime = UIDatePicker()
         let formatter = DateFormatter()
         let time = Date()
-        formatter.dateFormat = "hh:mm a"
+        formatter.dateFormat = "MM/YY hh:mm a"
         startTime.datePickerMode = .time
         startTime.addTarget(self, action: #selector(timePickerValueChanged), for: UIControl.Event.valueChanged)
         startTime.frame.size = CGSize(width: 0, height: 300)
         startTime.preferredDatePickerStyle = .wheels
         feedTime.inputView = startTime
-        feedTime.text = "Time: " + formatter.string(from: time)
+        feedTime.text = formatter.string(from: time)
         
     }
  
@@ -82,8 +81,8 @@ class BottleViewController: UIViewController {
     
     @objc func timePickerValueChanged(sender: UIDatePicker) {
             let formatter = DateFormatter()
-            formatter.dateFormat = "hh:mm a"
-            feedTime?.text = "Start Time: " + formatter.string(from: sender.date)
+            formatter.dateFormat = "MM/YY hh:mm a"
+            feedTime?.text = formatter.string(from: sender.date)
         }
     
     @objc func timeChanged() {

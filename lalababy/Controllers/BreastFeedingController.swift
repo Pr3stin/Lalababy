@@ -6,8 +6,13 @@
 //
 
 import UIKit
+import CoreData
 
 class BreastFeedingController: UIViewController {
+    
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    
+    let breastFeed = BreastFeedings()
     
     @IBOutlet weak var timerLabel1: UILabel!
     @IBOutlet weak var timerLabel2: UILabel!
@@ -35,20 +40,16 @@ class BreastFeedingController: UIViewController {
         
         // Time Picker
         
-        let time = Date()
+        let pickTime = UIDatePicker()
         let formatter = DateFormatter()
-        formatter.dateFormat = "hh:mm"
-        formatter.string(from: time)
-        startTime?.text = "Start Time: " + formatter.string(from: time)
-        
-        
-        
-        let timePicker = UIDatePicker()
-        timePicker.datePickerMode = .time
-        timePicker.addTarget(self, action: #selector(timePickerValueChanged(sender:)), for: UIControl.Event.valueChanged)
-        timePicker.frame.size = CGSize(width: 0, height: 200)
-        startTime?.inputView = timePicker
-        timePicker.addTarget(self, action: #selector(timeChanged), for: .valueChanged)
+        let time = Date()
+        formatter.dateFormat = "MM/YY hh:mm a"
+        pickTime.datePickerMode = .time
+        pickTime.addTarget(self, action: #selector(timePickerValueChanged), for: UIControl.Event.valueChanged)
+        pickTime.frame.size = CGSize(width: 0, height: 300)
+        pickTime.preferredDatePickerStyle = .wheels
+        startTime.inputView = startTime
+        startTime.text = formatter.string(from: time)
         
         //Total Time Label
         totalTimeLabel?.layer.masksToBounds = true
@@ -57,10 +58,32 @@ class BreastFeedingController: UIViewController {
         
     }
     
-    //New Feeding Cancel
+    //Save Button Pressed
     
-    @IBAction func cancelButtonTapped(_ sender: Any) {
+    
+    @IBAction func saveButtonPressed(_ sender: Any) {
+        guard let leftV = timerLabel1.text,
+              let rightV = timerLabel2.text,
+              let startTimeV = startTime.text,
+              let totalTimeV = totalTimeLabel.text
+        else { return }
+        
+        let newFeeding = BreastFeedings(context: self.context)
+        newFeeding.left = leftV
+        newFeeding.right = rightV
+        newFeeding.startTime = startTimeV
+        newFeeding.totalTime = totalTimeV
+        
+        self.saveData()
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    func saveData() {
+        do {
+            try context.save()
+        } catch {
+            print("Error saving Data \(error)")
+        }
     }
     
     //Breast Feed Cancel
@@ -74,7 +97,7 @@ class BreastFeedingController: UIViewController {
     
     @objc func timePickerValueChanged(sender: UIDatePicker) {
         let formatter = DateFormatter()
-        formatter.dateFormat = "hh:mm"
+        formatter.dateFormat = "MM/YY hh:mm"
         startTime?.text = "Start Time: " + formatter.string(from: sender.date)
     }
     
@@ -135,7 +158,7 @@ class BreastFeedingController: UIViewController {
         let totalSeconds = counterR + counterL
         let minutes = totalSeconds / 60
         let seconds = totalSeconds % 60
-        totalTimeLabel.text = String(format: "Total Time: %02d:%02d", minutes, seconds)
+        totalTimeLabel.text = String(format: "Total: %02d:%02d", minutes, seconds)
     }
     
 }

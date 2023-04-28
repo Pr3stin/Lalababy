@@ -20,7 +20,6 @@
 		8CBBA1A929E4F0CE005861A1 /* lalababy.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8CBBA1A729E4F0CE005861A1 /* lalababy.xcdatamodeld */; };
 		8CBBA1AB29E4F0D0005861A1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8CBBA1AA29E4F0D0005861A1 /* Assets.xcassets */; };
 		8CBBA1AE29E4F0D0005861A1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8CBBA1AC29E4F0D0005861A1 /* LaunchScreen.storyboard */; };
-		8CC7903F29F9D80C00D55ECB /* CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CC7903E29F9D80C00D55ECB /* CoreData.swift */; };
 		8CC7904129FA119100D55ECB /* BreastViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CC7904029FA119100D55ECB /* BreastViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -40,7 +39,6 @@
 		8CBBA1AA29E4F0D0005861A1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8CBBA1AD29E4F0D0005861A1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8CBBA1AF29E4F0D0005861A1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8CC7903E29F9D80C00D55ECB /* CoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreData.swift; sourceTree = "<group>"; };
 		8CC7904029FA119100D55ECB /* BreastViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreastViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -92,7 +90,6 @@
 			isa = PBXGroup;
 			children = (
 				8CBBA1A729E4F0CE005861A1 /* lalababy.xcdatamodeld */,
-				8CC7903E29F9D80C00D55ECB /* CoreData.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -201,7 +198,6 @@
 				8C81448B29F7550400A5BFAB /* NewPumpViewController.swift in Sources */,
 				8CBBA1A329E4F0CE005861A1 /* BottleFeedingsViewController.swift in Sources */,
 				8CB668CB29F4DC6F00DCD1C5 /* BreastFeedingController.swift in Sources */,
-				8CC7903F29F9D80C00D55ECB /* CoreData.swift in Sources */,
 				8CC7904129FA119100D55ECB /* BreastViewController.swift in Sources */,
 				8C81448D29F764A100A5BFAB /* DiaperViewController.swift in Sources */,
 				8C81448729F6065B00A5BFAB /* BottleViewControllerTableViewController.swift in Sources */,

@@ -46,14 +46,14 @@ class MainViewController: UITableViewController {
     
   
     
-    func saveData() {
-        do {
-            try context.save()
-        } catch {
-            print("Error saving Data \(error)")
-        }
-        tableView.reloadData()
-    }
+//    func saveData() {
+//        do {
+//            try context.save()
+//        } catch {
+//            print("Error saving Data \(error)")
+//        }
+//        tableView.reloadData()
+//    }
     
     func loadData() {
         let request : NSFetchRequest<BottleFeedings> = BottleFeedings.fetchRequest()
