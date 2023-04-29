@@ -99,6 +99,7 @@ class BreastFeedingController: UIViewController {
         let formatter = DateFormatter()
         formatter.dateFormat = "MM/YY hh:mm"
         startTime?.text = "Start Time: " + formatter.string(from: sender.date)
+        timeChanged()
     }
     
     @objc func timeChanged() {

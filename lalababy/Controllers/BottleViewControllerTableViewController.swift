@@ -83,6 +83,7 @@ class BottleViewController: UIViewController {
             let formatter = DateFormatter()
             formatter.dateFormat = "MM/YY hh:mm a"
             feedTime?.text = formatter.string(from: sender.date)
+        timeChanged()
         }
     
     @objc func timeChanged() {

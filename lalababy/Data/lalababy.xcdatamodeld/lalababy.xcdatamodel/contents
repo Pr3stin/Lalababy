@@ -17,7 +17,7 @@
         <attribute name="time" optional="YES" attributeType="String"/>
     </entity>
     <entity name="Pumps" representedClassName="Pumps" syncable="YES" codeGenerationType="class">
-        <attribute name="amountMeasurement" optional="YES" attributeType="String"/>
+        <attribute name="amountM" optional="YES" attributeType="String"/>
         <attribute name="startTime" optional="YES" attributeType="String"/>
         <attribute name="timer" optional="YES" attributeType="String"/>
         <attribute name="totalAmount" optional="YES" attributeType="String"/>

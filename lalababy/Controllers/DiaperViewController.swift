@@ -6,15 +6,22 @@
 //
 
 import UIKit
+import CoreData
 
 class DiaperViewController: UITableViewController {
 
-    let itemArray = ["Test Cell 1", "Test Cell 2", "Test Cell 3", "Test Cell 4"]
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    
+    var itemArray = [Diapers]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        loadData()
     }
 
     //Cells
@@ -27,8 +34,20 @@ class DiaperViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "DiaperLogCell", for: indexPath)
-        cell.textLabel?.text = itemArray[indexPath.row]
+        let diaper = itemArray[indexPath.row]
+        cell.textLabel?.text = "\(diaper.time ?? "") Status:  \(diaper.diaperType ?? "")"
         return cell
+    }
+    
+    func loadData() {
+        let request : NSFetchRequest<Diapers> = Diapers.fetchRequest()
+        
+        do {
+            itemArray = try context.fetch(request)
+        } catch {
+            print("Error loading Data \(error)")
+        }
+        tableView.reloadData()
     }
 
 }

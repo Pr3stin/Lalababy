@@ -6,9 +6,13 @@
 //
 
 import UIKit
+import CoreData
 
 class NewPumpViewController: UIViewController {
 
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    
+    let newPump = Pumps()
    
     @IBOutlet weak var amountPumped: UITextField!
     @IBOutlet weak var measurementPicker: UISegmentedControl!
@@ -25,29 +29,50 @@ class NewPumpViewController: UIViewController {
         
         //Time Picker
         
-        let time = Date()
+        let startTime = UIDatePicker()
         let formatter = DateFormatter()
-        formatter.dateFormat = "hh:mm"
-        formatter.string(from: time)
-        timeText?.text = "Start Time: " + formatter.string(from: time)
-        
-        let timePicker = UIDatePicker()
-        timePicker.datePickerMode = .time
-        timePicker.addTarget(self, action: #selector(timePickerValueChanged(sender:)), for: UIControl.Event.valueChanged)
-        timePicker.frame.size = CGSize(width: 0, height: 200)
-        timeText?.inputView = timePicker
-        timePicker.addTarget(self, action: #selector(timeChanged), for: .valueChanged)
-        
-        //Amount Pumped
-        
-        amountPumped.placeholder = "Amount Pumped:"
-        amountPumped.keyboardType = .decimalPad
+        let time = Date()
+        formatter.dateFormat = "MM/YY hh:mm a"
+        startTime.datePickerMode = .time
+        startTime.addTarget(self, action: #selector(timePickerValueChanged), for: UIControl.Event.valueChanged)
+        startTime.frame.size = CGSize(width: 0, height: 300)
+        startTime.preferredDatePickerStyle = .wheels
+        timeText.inputView = startTime
+        timeText.text = formatter.string(from: time)
         
         //Timer
         
         timerButton.addTarget(self, action: #selector(startTimer), for: .touchUpInside)
       
     
+    }
+    
+    //Save
+    
+    @IBAction func saveButtonPressed(_ sender: Any) {
+        guard let timer = timeLabel.text,
+              let time = timeText.text,
+              let amount = amountPumped.text,
+              let measurement = measurementPicker.titleForSegment(at: measurementPicker.selectedSegmentIndex)
+        else { return }
+        
+        let newPump = Pumps(context: self.context)
+        newPump.startTime = time
+        newPump.amountM = measurement
+        newPump.timer = timer
+        newPump.totalAmount = amount
+        
+        self.saveData()
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    
+    func saveData() {
+        do {
+            try context.save()
+        } catch {
+            print("Error saving Data \(error)")
+        }
     }
     
     //Cancel
@@ -82,8 +107,9 @@ class NewPumpViewController: UIViewController {
     
     @objc func timePickerValueChanged(sender: UIDatePicker) {
             let formatter = DateFormatter()
-            formatter.dateFormat = "hh:mm"
-            timeText?.text = "Start Time: " + formatter.string(from: sender.date)
+            formatter.dateFormat = "MM/YY hh:mm a"
+            timeText?.text =  formatter.string(from: sender.date)
+             timeChanged()
         }
     
     @objc func timeChanged() {

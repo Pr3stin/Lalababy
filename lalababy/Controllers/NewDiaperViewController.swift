@@ -71,8 +71,9 @@ class NewDiaperViewController: UIViewController {
     
     @objc func timePickerValueChanged(sender: UIDatePicker) {
             let formatter = DateFormatter()
-            formatter.dateFormat = "MM/YY hh:mm"
-            timeChanged?.text = "Time: " + formatter.string(from: sender.date)
+            formatter.dateFormat = "MM/YY hh:mm a"
+            timeChanged?.text =  formatter.string(from: sender.date)
+        timeChanging()
         }
     
     @objc func timeChanging() {
