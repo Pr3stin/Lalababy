@@ -26,6 +26,8 @@ class MainViewController: UITableViewController {
      
     }
     
+    //Load Data
+    
     override func viewDidAppear(_ animated: Bool) {
         loadData()
     }
@@ -42,18 +44,6 @@ class MainViewController: UITableViewController {
         
                 return cell
     }
-    
-    
-  
-    
-//    func saveData() {
-//        do {
-//            try context.save()
-//        } catch {
-//            print("Error saving Data \(error)")
-//        }
-//        tableView.reloadData()
-//    }
     
     func loadData() {
         let request : NSFetchRequest<BottleFeedings> = BottleFeedings.fetchRequest()

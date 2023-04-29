@@ -6,11 +6,13 @@
 //
 
 import UIKit
+import CoreData
 
 class PumpsViewController: UITableViewController {
 
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
-    let itemArray = ["Test Cell 1", "Test Cell 2", "Test Cell 3", "test Cell 4"]
+    var itemArray = [Pumps]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,6 +20,23 @@ class PumpsViewController: UITableViewController {
       
     }
 
+    //Load Data
+    
+    func loadData() {
+        let request : NSFetchRequest<Pumps> = Pumps.fetchRequest()
+        
+        do {
+            itemArray = try context.fetch(request)
+        } catch {
+            print("Error loading Data \(error)")
+        }
+        tableView.reloadData()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        loadData()
+    }
+    
     //Cells
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -29,7 +48,8 @@ class PumpsViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "PumpingLogCell", for: indexPath)
-        cell.textLabel?.text = itemArray[indexPath.row]
+        let pumper = itemArray[indexPath.row]
+        cell.textLabel?.text = "\(pumper.startTime ?? "") For: \(pumper.timer ?? "") \(pumper.totalAmount ?? "") \(pumper.amountM ?? "")"
         return cell
     }
     

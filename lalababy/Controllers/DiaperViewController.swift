@@ -20,6 +20,8 @@ class DiaperViewController: UITableViewController {
        
     }
     
+    //Load Data
+    
     override func viewDidAppear(_ animated: Bool) {
         loadData()
     }
