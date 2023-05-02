@@ -40,7 +40,7 @@ class MainViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "BottleCell", for: indexPath)
         let bottle = array[indexPath.row]
-       cell.textLabel?.text = "\(bottle.startTime ?? "")   \(bottle.type ?? "")  \(bottle.amount ?? "") \(bottle.amountM ?? "")"
+       cell.textLabel?.text = "\(bottle.startTime ?? "")  \(bottle.type ?? "")  \(bottle.amount ?? "") \(bottle.amountM ?? "")"
         
                 return cell
     }

@@ -12,6 +12,7 @@
 		8C81448B29F7550400A5BFAB /* NewPumpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C81448A29F7550400A5BFAB /* NewPumpViewController.swift */; };
 		8C81448D29F764A100A5BFAB /* DiaperViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C81448C29F764A100A5BFAB /* DiaperViewController.swift */; };
 		8C81448F29F765D000A5BFAB /* NewDiaperViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C81448E29F765D000A5BFAB /* NewDiaperViewController.swift */; };
+		8C935A9F2A00847B00143BC4 /* QuoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C935A9E2A00847B00143BC4 /* QuoteViewController.swift */; };
 		8CB668CB29F4DC6F00DCD1C5 /* BreastFeedingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB668CA29F4DC6F00DCD1C5 /* BreastFeedingController.swift */; };
 		8CBBA19F29E4F0CE005861A1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CBBA19E29E4F0CE005861A1 /* AppDelegate.swift */; };
 		8CBBA1A129E4F0CE005861A1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CBBA1A029E4F0CE005861A1 /* SceneDelegate.swift */; };
@@ -29,6 +30,7 @@
 		8C81448A29F7550400A5BFAB /* NewPumpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPumpViewController.swift; sourceTree = "<group>"; };
 		8C81448C29F764A100A5BFAB /* DiaperViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DiaperViewController.swift; path = lalababy/Controllers/DiaperViewController.swift; sourceTree = SOURCE_ROOT; };
 		8C81448E29F765D000A5BFAB /* NewDiaperViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewDiaperViewController.swift; sourceTree = "<group>"; };
+		8C935A9E2A00847B00143BC4 /* QuoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = QuoteViewController.swift; path = lalababy/Screens/QuoteViewController.swift; sourceTree = SOURCE_ROOT; };
 		8CB668CA29F4DC6F00DCD1C5 /* BreastFeedingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BreastFeedingController.swift; path = lalababy/Controllers/BreastFeedingController.swift; sourceTree = SOURCE_ROOT; };
 		8CBBA19B29E4F0CE005861A1 /* lalababy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = lalababy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CBBA19E29E4F0CE005861A1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -56,6 +58,7 @@
 		8C692E7729F0D74A008B3D75 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				8C935A9E2A00847B00143BC4 /* QuoteViewController.swift */,
 				8CB668CA29F4DC6F00DCD1C5 /* BreastFeedingController.swift */,
 				8CC7904029FA119100D55ECB /* BreastViewController.swift */,
 				8CBBA1A229E4F0CE005861A1 /* BottleFeedingsViewController.swift */,
@@ -203,6 +206,7 @@
 				8C81448729F6065B00A5BFAB /* BottleViewControllerTableViewController.swift in Sources */,
 				8C81448F29F765D000A5BFAB /* NewDiaperViewController.swift in Sources */,
 				8CBBA1A929E4F0CE005861A1 /* lalababy.xcdatamodeld in Sources */,
+				8C935A9F2A00847B00143BC4 /* QuoteViewController.swift in Sources */,
 				8CBBA19F29E4F0CE005861A1 /* AppDelegate.swift in Sources */,
 				8CBBA1A129E4F0CE005861A1 /* SceneDelegate.swift in Sources */,
 			);
