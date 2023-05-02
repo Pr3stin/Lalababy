@@ -41,21 +41,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             })
             return container
         }()
-    
-//    lazy var fetchedResultsController: NSFetchedResultsController<NSManagedObject> = {
-//        let fetchRequest: NSFetchRequest<NSManagedObject> = NSFetchRequest(entityName: "BottleFeedings")
-//        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "type", ascending: true)]
-//        let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.persistentContainer.viewContext, sectionNameKeyPath: nil, cacheName: nil)
-//        return fetchedResultsController
-//    }()
-    
-//    lazy var fetchedResultsController2: NSFetchedResultsController<NSManagedObject> = {
-//        let fetchRequest: NSFetchRequest<NSManagedObject> = NSFetchRequest(entityName: "BreastFeedings")
-//        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "startTime", ascending: true)]
-//        let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.persistentContainer.viewContext, sectionNameKeyPath: nil, cacheName: nil)
-//        return fetchedResultsController
-//    }()
-//
         
         // MARK: - Core Data Saving support
         

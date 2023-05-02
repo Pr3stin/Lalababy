@@ -51,5 +51,21 @@ class DiaperViewController: UITableViewController {
         }
         tableView.reloadData()
     }
+    
+    override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+        return .delete
+    }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            context.delete(itemArray[indexPath.row])
+            itemArray.remove(at: indexPath.row)
+            do { try context.save()
+            } catch {
+                print("error deleting item")
+            }
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        }
+    }
 
 }
