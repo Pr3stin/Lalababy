@@ -23,15 +23,21 @@ class BreastViewController: UITableViewController {
         loadData()
     }
 
+    
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return breastFeeding.count
+    }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
      
-        return breastFeeding.count
+        return 1
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "BreastCell", for: indexPath)
-        let breast = breastFeeding[indexPath.row]
+        let breast = breastFeeding[indexPath.section]
+        cell.textLabel?.numberOfLines = 0
+        cell.textLabel?.lineBreakMode = NSLineBreakMode.byWordWrapping
         cell.textLabel?.text = "\(breast.startTime ?? "") L: \(breast.left ?? "") R: \(breast.right ?? "") \(breast.totalTime ?? "")"
         return cell
     }
@@ -54,13 +60,13 @@ class BreastViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            context.delete(breastFeeding[indexPath.row])
-            breastFeeding.remove(at: indexPath.row)
+            context.delete(breastFeeding[indexPath.section])
+            breastFeeding.remove(at: indexPath.section)
             do { try context.save()
             } catch {
                 print("error deleting item")
             }
-            tableView.deleteRows(at: [indexPath], with: .fade)
+            tableView.deleteSections([indexPath.section], with: .fade)
         }
     }
 

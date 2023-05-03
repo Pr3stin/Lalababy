@@ -39,16 +39,21 @@ class PumpsViewController: UITableViewController {
     
     //Cells
 
+    
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return itemArray.count
+    }
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
        
-        return itemArray.count
+        return 1
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "PumpingLogCell", for: indexPath)
-        let pumper = itemArray[indexPath.row]
+        let pumper = itemArray[indexPath.section]
         cell.textLabel?.text = "\(pumper.startTime ?? "") For: \(pumper.timer ?? "") \(pumper.totalAmount ?? "") \(pumper.amountM ?? "")"
         return cell
     }
@@ -59,13 +64,13 @@ class PumpsViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            context.delete(itemArray[indexPath.row])
-            itemArray.remove(at: indexPath.row)
+            context.delete(itemArray[indexPath.section])
+            itemArray.remove(at: indexPath.section)
             do { try context.save()
             } catch {
                 print("error deleting item")
             }
-            tableView.deleteRows(at: [indexPath], with: .fade)
+            tableView.deleteSections([indexPath.section], with: .fade)
         }
     }
 

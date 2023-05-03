@@ -32,15 +32,18 @@ class MainViewController: UITableViewController {
         loadData()
     }
     
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return array.count
+    }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return array.count
+        return 1
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "BottleCell", for: indexPath)
-        let bottle = array[indexPath.row]
-       cell.textLabel?.text = "\(bottle.startTime ?? "")  \(bottle.type ?? "")  \(bottle.amount ?? "") \(bottle.amountM ?? "")"
+        let bottle = array[indexPath.section]
+       cell.textLabel?.text = "\(bottle.startTime ?? "")  \(bottle.type ?? "") - \(bottle.amount ?? "") \(bottle.amountM ?? "")"
         
                 return cell
     }
@@ -62,13 +65,13 @@ class MainViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            context.delete(array[indexPath.row])
-            array.remove(at: indexPath.row)
+            context.delete(array[indexPath.section])
+            array.remove(at: indexPath.section)
             do { try context.save()
             } catch {
                 print("error deleting item")
             }
-            tableView.deleteRows(at: [indexPath], with: .fade)
+            tableView.deleteSections([indexPath.section], with: .fade)
         }
     }
     
