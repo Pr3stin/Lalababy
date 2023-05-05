@@ -48,7 +48,7 @@ class BreastFeedingController: UIViewController {
         pickTime.addTarget(self, action: #selector(timePickerValueChanged), for: UIControl.Event.valueChanged)
         pickTime.frame.size = CGSize(width: 0, height: 300)
         pickTime.preferredDatePickerStyle = .wheels
-        startTime.inputView = startTime
+        startTime.inputView = pickTime
         startTime.text = formatter.string(from: time)
         
         //Total Time Label
