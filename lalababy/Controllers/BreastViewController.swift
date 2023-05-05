@@ -38,7 +38,7 @@ class BreastViewController: UITableViewController {
         let breast = breastFeeding[indexPath.section]
         cell.textLabel?.numberOfLines = 0
         cell.textLabel?.lineBreakMode = NSLineBreakMode.byWordWrapping
-        cell.textLabel?.text = "\(breast.startTime ?? "") L: \(breast.left ?? "") R: \(breast.right ?? "") \(breast.totalTime ?? "")"
+        cell.textLabel?.text = "\(breast.startTime ?? "") L: \(breast.left ?? "") R: \(breast.right ?? "")      \(breast.totalTime ?? "")"
         return cell
     }
 
